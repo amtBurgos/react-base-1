@@ -29,13 +29,3 @@
     margin-top: 90px;
   }
 }
-
-.buttons {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-
-  a {
-    width: 46%;
-  }
-}

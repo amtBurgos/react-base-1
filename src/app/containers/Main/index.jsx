@@ -10,7 +10,7 @@ import styles from './styles';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
-  MainModel: PropTypes.instanceOf(Immutable.Record).isRequired,
+  MainModel: PropTypes.instanceOf(Immutable.Record).isRequired
 };
 
 class Main extends Component {
@@ -27,12 +27,12 @@ class Main extends Component {
     const LogoData = this.props.MainModel;
 
     return (
-      <div className={styles.Main}>
+      <div className={ styles.Main }>
         <div>
-          <Logo alt={LogoData.alt} width={LogoData.width} src={LogoData.src} />
+          <Logo alt={ LogoData.alt } width={ LogoData.width } src={ LogoData.src } />
 
           <div>
-            <div className={styles.txt}>Examples</div>
+            <div className={ styles.txt }>Examples</div>
           </div>
         </div>
       </div>

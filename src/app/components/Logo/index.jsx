@@ -10,8 +10,8 @@ const propTypes = {
 
 const ReactBaseLogo = props => (
 
-  <Link to='/main'>
-    <img alt={props.alt} src={props.src} width={props.width} />
+  <Link to="/main">
+    <img alt={ props.alt } src={ props.src } width={ props.width } />
   </Link>
 );
 

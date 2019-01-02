@@ -3,17 +3,31 @@
     "target": "es2017",
     "allowSyntheticDefaultImports": false,
     "baseUrl": "./",
-    "exclude": ["node_modules", "dist"],
     "paths": {
-      "server/*": ["server/*"],
-      "base/*": ["src/base/*"],
-      "store/*": ["src/base/store/*"],
-      "containers/*": ["src/app/containers/*"],
-      "components/*": ["src/app/components/*"],
-
-      "server": ["server/index.js"],
-      "base": ["src/base/index.js"],
-      "store": ["src/base/store/index.js"]
+      "server/*": [
+        "server/*"
+      ],
+      "base/*": [
+        "src/base/*"
+      ],
+      "store/*": [
+        "src/base/store/*"
+      ],
+      "containers/*": [
+        "src/app/containers/*"
+      ],
+      "components/*": [
+        "src/app/components/*"
+      ],
+      "server": [
+        "server/index.js"
+      ],
+      "base": [
+        "src/base/index.js"
+      ],
+      "store": [
+        "src/base/store/index.js"
+      ]
     }
   }
 }

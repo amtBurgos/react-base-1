@@ -1,5 +1,12 @@
 {
-  "extends": ["airbnb-base", "plugin:react/recommended"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:react/recommended"
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 8,
@@ -10,10 +17,15 @@
       "experimentalObjectRestSpread": true
     }
   },
-  "plugins": ["react"],
+  "plugins": [
+    "react"
+  ],
   "rules": {
     "import/no-extraneous-dependencies": 0,
-    "space-in-parens": ["error", "never"],
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
     "consistent-return": 0,
     "import/prefer-default-export": 0,
     "class-methods-use-this": 0
@@ -31,8 +43,13 @@
     },
     "propWrapperFunctions": [
       "forbidExtraProps",
-      { "property": "freeze", "object": "Object" },
-      { "property": "myFavoriteWrapper" }
+      {
+        "property": "freeze",
+        "object": "Object"
+      },
+      {
+        "property": "myFavoriteWrapper"
+      }
     ]
   }
 }

@@ -11,7 +11,7 @@
     "start": "npm run logo && cross-env NODE_ENV=development webpack-dev-server --mode development --config webpack/webpack.config.dev.babel.js",
     "server": "npm run build && cross-env NODE_ENV=production node server/",
     "postinstall": "npm run generate:dll",
-    "lint": "npm run logo && eslint src",
+    "lint": "npm run logo && eslint src --ext .js --ext .jsx",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "keywords": [

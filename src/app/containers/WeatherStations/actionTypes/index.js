@@ -7,5 +7,5 @@ export default createActionType([
   'WEATHERSTATION_SELECTED',
   'FORECAST_REQUEST',
   'FORECAST_SUCCESS',
-  'FORECAST_ERROR'
+  'FORECAST_ERROR',
 ]);

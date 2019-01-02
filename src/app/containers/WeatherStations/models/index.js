@@ -9,13 +9,21 @@ const WeatherStationsCollection = Record({
   data: Map(),
   stationSelected: -1,
   forecast: Map(),
-  weatherStationDetails: Map()
+  weatherStationDetails: Map(),
 });
 
-const setInitialState = initialState => (
+const setInitialState = (initialState) => {
+  // eslint-disable-next-line no-param-reassign
   initialState.WeatherStations = new WeatherStationsCollection({
-    data: generateImmutable({}, WeatherStationsModel)
-  })
-);
+    data: generateImmutable({}, WeatherStationsModel),
+  });
+  return initialState;
+};
 
-export { WeatherStationsModel, WeatherStationsCollection, ForecastModel, WeatherStationDetailsModel, setInitialState };
+export {
+  WeatherStationsModel,
+  WeatherStationsCollection,
+  ForecastModel,
+  WeatherStationDetailsModel,
+  setInitialState,
+};

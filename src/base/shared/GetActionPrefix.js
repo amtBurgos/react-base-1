@@ -1,5 +1,3 @@
-const getActionPrefix = action => {
-  return action.substr(0, action.lastIndexOf('_'));
-};
+const getActionPrefix = action => action.substr(0, action.lastIndexOf('_'));
 
 export default getActionPrefix;

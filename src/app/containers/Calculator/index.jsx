@@ -8,12 +8,12 @@ import styles from './styles';
 
 class Calculator extends Component {
   static proptypes = {
-    Calculator: PropTypes.instanceOf(Record).isRequired
-  }
+    Calculator: PropTypes.instanceOf(Record).isRequired,
+  };
 
-  render () {
+  render() {
     return (
-      <div className={ styles.Calculator }>
+      <div className={styles.Calculator}>
         <div>
           <Display />
           <ButtonPannel />

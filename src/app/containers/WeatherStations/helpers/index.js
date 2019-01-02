@@ -1,24 +1,8 @@
 import { generateMap, generateImmutable } from 'base/shared/ModelHelper';
 import { WeatherStationsModel, ForecastModel, WeatherStationDetailsModel } from '../models';
 
-export const parseWeatherStations = data => (
-  generateImmutable(data, WeatherStationsModel)
-);
-
-export const parseWeatherStation = data => {
-  const dataParsed = getDataWeatherStation(data);
-  return generateMap(dataParsed, WeatherStationDetailsModel);
-};
-
-export const parseWeather = data => {
-  for (let i = 0; i < data.list.length; i++) {
-    data.list[i].id = i + 1;
-  }
-  return generateMap(data.list, ForecastModel);
-};
-
-export const getDataWeatherStation = data => {
-  let obj = {};
+export const getDataWeatherStation = (data) => {
+  const obj = {};
   if (data.params.indexOf('temp') > -1) {
     obj.temp = data.last.main.temp;
   }
@@ -46,7 +30,22 @@ export const getDataWeatherStation = data => {
   obj.id = data.station.id;
   obj.dt = data.last.dt;
 
-  let list = [obj];
+  const list = [obj];
 
   return list;
+};
+
+export const parseWeatherStations = data => generateImmutable(data, WeatherStationsModel);
+
+export const parseWeatherStation = (data) => {
+  const dataParsed = getDataWeatherStation(data);
+  return generateMap(dataParsed, WeatherStationDetailsModel);
+};
+
+export const parseWeather = (data) => {
+  for (let i = 0; i < data.list.length; i += 1) {
+    // eslint-disable-next-line no-param-reassign
+    data.list[i].id = i + 1;
+  }
+  return generateMap(data.list, ForecastModel);
 };

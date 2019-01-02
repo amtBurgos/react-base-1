@@ -7,7 +7,7 @@ const WeatherStationsModel = Record({
   last: null,
   station: null,
   coord: null,
-  main: null
+  main: null,
 });
 
 export default WeatherStationsModel;

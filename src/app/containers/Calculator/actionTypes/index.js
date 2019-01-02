@@ -12,5 +12,5 @@ export default createActionType([
   'INPUT_NUMBER',
   'INPUT_DECIMAL',
   'INPUT_OPERATOR',
-  'INPUT_OPERATION'
+  'INPUT_OPERATION',
 ]);

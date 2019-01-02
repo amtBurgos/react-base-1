@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -8,11 +9,10 @@ import * as common from './webpack.common';
 
 export const cache = true;
 export const devtool = '';
-export const context = common.context;
-export const resolve = common.resolve;
+export const { context, resolve } = common;
 export const entry = {
   app: common.clientPath,
-  vendor: common.entry.vendor
+  vendor: common.entry.vendor,
 };
 
 export const output = {
@@ -20,7 +20,7 @@ export const output = {
   library: '[name]',
   filename: '[name].[hash].js',
   sourceMapFilename: '[name].map',
-  chunkFilename: '[name].[hash].chunk.js'
+  chunkFilename: '[name].[hash].chunk.js',
 };
 
 export const module = {
@@ -29,7 +29,7 @@ export const module = {
       test: /\.(js|jsx)$/,
       include: /src/,
       exclude: [/node_modules/, /dist/, /server/],
-      use: ['babel-loader']
+      use: ['babel-loader'],
     },
     {
       test: /\.(sa|sc|c)ss$/,
@@ -41,21 +41,18 @@ export const module = {
           options: {
             modules: true,
             importLoaders: 1,
-            localIdentName: '[hash:base64:4]'
-          }
+            localIdentName: '[hash:base64:4]',
+          },
         },
         {
           loader: 'postcss-loader',
           options: {
-            plugins: () => common.postcss.concat(
-              require('postcss-clean')(),
-              require('autoprefixer')()
-            )
-          }
-        }
-      ]
-    }
-  ])
+            plugins: () => common.postcss.concat(require('postcss-clean')(), require('autoprefixer')()),
+          },
+        },
+      ],
+    },
+  ]),
 };
 
 export const optimization = {
@@ -65,19 +62,21 @@ export const optimization = {
       commons: {
         test: /[\\/]node_modules[\\/]/,
         name: 'vendor',
-        chunks: 'all'
-      }
-    }
-  }
+        chunks: 'all',
+      },
+    },
+  },
 };
 
 export const plugins = [
   new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('production') }),
   new webpack.DllReferencePlugin({
     context: path.join(__dirname),
-    manifest: require('../dist/dlls/vendor-manifest.json')
+    manifest: require('../dist/dlls/vendor-manifest.json'),
   }),
-  new CopyWebpackPlugin([{ from: path.resolve(__dirname, '../src/app/assets'), to: common.assetsPath }]),
+  new CopyWebpackPlugin([
+    { from: path.resolve(__dirname, '../src/app/assets'), to: common.assetsPath },
+  ]),
   new webpack.NoEmitOnErrorsPlugin(),
   new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css', allChunks: true }),
   new HtmlWebpackPlugin({
@@ -95,6 +94,6 @@ export const plugins = [
         return -1;
       }
       return 0;
-    }
-  })
+    },
+  }),
 ].concat(common.plugins);

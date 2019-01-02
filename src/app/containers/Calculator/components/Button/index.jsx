@@ -7,10 +7,10 @@ import styles from './styles';
 const propTypes = {
   type: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
-const Button = props => {
+const Button = (props) => {
   let style;
 
   if (props.type === 'operator') style = styles.ButtonOperate;
@@ -18,16 +18,9 @@ const Button = props => {
   else style = styles.Button;
 
   return (
-    <button
-      onClick={ props.onClick }
-      className={ style }
-    >
-      { props.value }
-      <Ink
-        radius={ 500 }
-        opcatity={ 1 }
-        recenter={ false }
-      />
+    <button onClick={props.onClick} className={style}>
+      {props.value}
+      <Ink radius={500} opcatity={1} recenter={false} />
     </button>
   );
 };

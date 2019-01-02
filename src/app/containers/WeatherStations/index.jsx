@@ -1,7 +1,7 @@
+import React, { Component } from 'react';
 import { Map } from 'immutable';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 
@@ -10,11 +10,11 @@ import MapBox from './components/MapBox';
 import ForecastDetail from './components/ForecastDetail';
 import styles from './styles';
 
-export class WeatherStations extends Component {
+class WeatherStations extends Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     stations: PropTypes.instanceOf(Map).isRequired,
-    selected: PropTypes.number.isRequired
+    selected: PropTypes.number.isRequired,
   };
 
   constructor(props) {
@@ -39,20 +39,17 @@ export class WeatherStations extends Component {
   render() {
     const { stations, selected } = this.props;
     return (
-      <div className={ styles.WeatherStations }>
-        <MapBox
-          stations={ stations }
-          onClick={ this.onClick }
-        />
-        { !!~selected && <ForecastDetail /> }
+      <div className={styles.WeatherStations}>
+        <MapBox stations={stations} onClick={this.onClick} />
+        {!!~selected && <ForecastDetail />}
       </div>
     );
   }
 }
 
-export default withRouter(connect(
-  state => ({
+export default withRouter(
+  connect(state => ({
     stations: state.WeatherStations.get('data'),
-    selected: state.WeatherStations.get('stationSelected')
-  })
-)(WeatherStations));
+    selected: state.WeatherStations.get('stationSelected'),
+  }))(WeatherStations),
+);

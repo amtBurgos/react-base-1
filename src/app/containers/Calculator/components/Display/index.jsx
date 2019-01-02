@@ -6,27 +6,25 @@ import classNames from 'classnames/bind';
 
 import styles from './styles';
 
-export class Display extends Component {
+class Display extends Component {
   static propTypes = {
-    Calculator: PropTypes.instanceOf(Record).isRequired
+    Calculator: PropTypes.instanceOf(Record).isRequired,
   };
 
-  render () {
+  render() {
     const cx = classNames.bind(styles);
-    const display = this.props.Calculator.display;
+    const { display } = this.props.Calculator;
 
     const classDisplay = cx({
-      Fade: this.props.Calculator.resetDisplay
+      Fade: this.props.Calculator.resetDisplay,
     });
 
     return (
-      <div className={ styles.Display }>
-        <span className={ classDisplay }>{ display }</span>
+      <div className={styles.Display}>
+        <span className={classDisplay}>{display}</span>
       </div>
     );
   }
 }
 
-export default connect(
-  (state) => ({ Calculator: state.Calculator })
-)(Display);
+export default connect(state => ({ Calculator: state.Calculator }))(Display);

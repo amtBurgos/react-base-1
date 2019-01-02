@@ -7,7 +7,7 @@ const stationStyle = {
   width: CIRCLE_SIZE,
   height: CIRCLE_SIZE + STICK_SIZE,
   left: -CIRCLE_SIZE / 2,
-  top: -(CIRCLE_SIZE + STICK_SIZE)
+  top: -(CIRCLE_SIZE + STICK_SIZE),
 };
 
 const stationCircleStyle = {
@@ -25,14 +25,13 @@ const stationCircleStyle = {
   fontWeight: 'bold',
   padding: 0,
   cursor: 'pointer',
-  boxShadow: '0 0 0 1px white'
+  boxShadow: '0 0 0 1px white',
 };
-
 
 const stationCircleStyleHover = {
   ...stationCircleStyle,
   border: '10px solid #FAB10A',
-  color: '#f44336'
+  color: '#f44336',
 };
 
 const stationStickStyleShadow = {
@@ -42,9 +41,8 @@ const stationStickStyleShadow = {
   width: STICK_WIDTH,
   height: STICK_SIZE,
   backgroundColor: '#f44336',
-  boxShadow: '0 0 0 1px white'
+  boxShadow: '0 0 0 1px white',
 };
-
 
 const stationStickStyle = {
   position: 'absolute',
@@ -52,34 +50,39 @@ const stationStickStyle = {
   top: CIRCLE_SIZE,
   width: STICK_WIDTH,
   height: STICK_SIZE,
-  backgroundColor: '#f44336'
+  backgroundColor: '#f44336',
 };
 
 const stationStickStyleHover = {
   ...stationStickStyle,
-  backgroundColor: '#3f51b5'
+  backgroundColor: '#3f51b5',
 };
 
 const stationInfoWindowStyle = {
   position: 'absolute',
   left: CIRCLE_SIZE / 2 - STICK_WIDTH / 2,
   top: CIRCLE_SIZE,
-  width:'100px',
+  width: '100px',
   height: '80px',
   backgroundColor: '#f44336',
-  display: 'none'
+  display: 'none',
 };
 
 const stationInfoWindowStyleHover = {
   ...stationStickStyle,
   backgroundColor: '#3f51b5',
-  display:'block'
+  display: 'block',
 };
 
 export {
   stationStyle,
-  stationCircleStyle, stationCircleStyleHover,
-  stationStickStyle, stationStickStyleHover,stationStickStyleShadow,
-  CIRCLE_SIZE, STICK_SIZE,
-  stationInfoWindowStyleHover, stationInfoWindowStyle
+  stationCircleStyle,
+  stationCircleStyleHover,
+  stationStickStyle,
+  stationStickStyleHover,
+  stationStickStyleShadow,
+  CIRCLE_SIZE,
+  STICK_SIZE,
+  stationInfoWindowStyleHover,
+  stationInfoWindowStyle,
 };

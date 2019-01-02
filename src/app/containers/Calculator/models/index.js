@@ -7,9 +7,11 @@ export const CalculatorModel = Record({
   prevValue: 0,
   nextValue: 0,
   newValue: false,
-  resetDisplay: false
+  resetDisplay: false,
 });
 
-export const setInitialState = initialState => (
-  initialState.Calculator = new CalculatorModel(initialState.Calculator)
-);
+export const setInitialState = (initialState) => {
+  // eslint-disable-next-line no-param-reassign
+  initialState.Calculator = new CalculatorModel(initialState.Calculator);
+  return initialState;
+};

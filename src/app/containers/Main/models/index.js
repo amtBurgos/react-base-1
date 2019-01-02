@@ -5,11 +5,13 @@ const MainModel = Record({
   src: '',
   alt: '',
   name: '',
-  width: 0
+  width: 0,
 });
 
-const setInitialState = initialState => (
-  initialState.Main = new MainModel()
-);
+const setInitialState = (initialState) => {
+  // eslint-disable-next-line no-param-reassign
+  initialState.Main = new MainModel();
+  return initialState;
+};
 
 export { MainModel, setInitialState };

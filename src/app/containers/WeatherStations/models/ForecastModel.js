@@ -8,7 +8,7 @@ const ForecastModel = Record({
   pressure: 0,
   speed: 0,
   temp: {},
-  weather: []
+  weather: [],
 });
 
 export default ForecastModel;

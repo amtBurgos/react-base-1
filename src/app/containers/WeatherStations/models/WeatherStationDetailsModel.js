@@ -8,7 +8,7 @@ const WeatherStationDetailsModel = Record({
   wind: null,
   visibility: null,
   rain: null,
-  dt: 0
+  dt: 0,
 });
 
 export default WeatherStationDetailsModel;

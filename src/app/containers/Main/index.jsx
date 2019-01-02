@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 
 import Actions from './actions';
 import Logo from '../../components/Logo';
-import LinkButton from '../../components/LinkButton';
 import styles from './styles';
 
 const propTypes = {
@@ -21,7 +20,7 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this.props.MainModel.name || this.actions.getLogo();
+    return this.props.MainModel.name || this.actions.getLogo();
   }
 
   render() {
@@ -34,20 +33,6 @@ class Main extends Component {
 
           <div>
             <div className={styles.txt}>Examples</div>
-
-            <div className={styles.buttons}>
-              <LinkButton location="/calculator" value="Simple Redux Calculator" />
-
-              <LinkButton location="/weatherstations" value="GoogleMaps Wheater Stations" />
-            </div>
-          </div>
-
-          <div className={styles.txt}>
-            <div>
-              <a href="https://github.com/atSistemas/react-base">
-                <img src="assets/images/github.svg" alt="Github" width="40px" />
-              </a>
-            </div>
           </div>
         </div>
       </div>

@@ -1,27 +1,26 @@
-import Immutable from "immutable";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import { bindActionCreators } from "redux";
+import React, { Component } from 'react';
+import Immutable from 'immutable';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 
-import Actions from "./actions";
-import Logo from "../../components/Logo";
-import LinkButton from "../../components/LinkButton";
-import styles from "./styles";
+import Actions from './actions';
+import Logo from '../../components/Logo';
+import styles from './styles';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
-  MainModel: PropTypes.instanceOf(Immutable.Record).isRequired
+  MainModel: PropTypes.instanceOf(Immutable.Record).isRequired,
 };
 
-export class Main extends Component {
+class Main extends Component {
   constructor(props) {
     super(props);
     this.actions = bindActionCreators(Actions, props.dispatch);
   }
 
   componentDidMount() {
-    this.props.MainModel.name || this.actions.getLogo();
+    return this.props.MainModel.name || this.actions.getLogo();
   }
 
   render() {

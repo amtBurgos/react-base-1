@@ -4,11 +4,14 @@ import Main from 'containers/Main/';
 import App from 'containers/App';
 
 const Routes = () => (
-  <Route path="/" component={ () => (
-    <App>
-      <Route exact={ true } path="/" component={ Main } />
-    </App>
-  ) } />
+  <Route
+    path="/"
+    component={() => (
+      <App>
+        <Route exact={true} path="/" component={Main} />
+      </App>
+    )}
+  />
 );
 
 export default Routes;

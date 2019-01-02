@@ -1,8 +1,9 @@
+/* eslint-disable no-undef, no-underscore-dangle, global-require */
 import { createLogger } from 'redux-logger';
 import reduxReqMiddleware from 'redux-req-middleware';
 import { createStore, compose, applyMiddleware } from 'redux';
 
-import base from 'base/';
+import base from 'base';
 import rootReducer from '../reducers';
 
 const configureStore = (history, initialState) => {
@@ -12,13 +13,11 @@ const configureStore = (history, initialState) => {
   if (base.env === 'development') {
     middleware = applyMiddleware(
       createLogger({ level: 'info', collapsed: true }),
-      reduxReqMiddleware()
+      reduxReqMiddleware(),
     );
     composeEnhancer = typeof window !== 'undefined' && (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose);
   } else {
-    middleware = applyMiddleware(
-      reduxReqMiddleware()
-    );
+    middleware = applyMiddleware(reduxReqMiddleware());
   }
 
   const enhancer = composeEnhancer(middleware);

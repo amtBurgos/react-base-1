@@ -1,10 +1,11 @@
+/* eslint-disable prefer-rest-params, unamed-function, no-param-reassign, func-names, no-console */
 exports.useColors = process.browser ? null : require('supports-color');
 
 exports.colors = {
   success: 32,
   error: 31,
   default: 32,
-  info: 34
+  info: 34,
 };
 
 exports.symbols = {
@@ -12,7 +13,7 @@ exports.symbols = {
   err: '✖',
   info: 'i',
   dot: '․',
-  CR: '\u000A'
+  CR: '\u000A',
 };
 
 if (process.platform === 'win32') {
@@ -32,27 +33,27 @@ exports.color = function (type, str) {
     type = 'default';
   }
 
-  return '\u001b[' + exports.colors[type] + 'm' + str + '\u001b[0m';
+  return `\u001b[${exports.colors[type]}m${str}\u001b[0m`;
 };
 
 exports.line = function () {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, [exports.symbols.CR].concat(args).concat(exports.symbols.CR));
+  return console.log(...[exports.symbols.CR].concat(args).concat(exports.symbols.CR));
 };
 
 exports.info = function () {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, ['[BASE]', exports.color('info', exports.symbols.info)].concat(args));
+  return console.log(...['[BASE]', exports.color('info', exports.symbols.info)].concat(args));
 };
 
 exports.success = function () {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, ['[BASE]', exports.color('success', exports.symbols.ok)].concat(args));
+  return console.log(...['[BASE]', exports.color('success', exports.symbols.ok)].concat(args));
 };
 
 exports.error = function () {
   const args = Array.prototype.slice.call(arguments);
-  return console.log.apply(console, ['[BASE]', exports.color('error', exports.symbols.error)].concat(args));
+  return console.log(...['[BASE]', exports.color('error', exports.symbols.error)].concat(args));
 };
 
 exports.clear = function () {

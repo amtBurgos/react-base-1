@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import path from 'path';
 import chalk from 'chalk';
 
@@ -28,8 +29,8 @@ export const entry = {
     'history',
     'recompose',
     'redux-req-middleware',
-    'isomorphic-fetch'
-  ]
+    'isomorphic-fetch',
+  ],
 };
 
 export const module = {
@@ -41,26 +42,31 @@ export const module = {
         loader: 'html-loader',
         options: {
           attrs: [':data-src'],
-          minimize: true
-        }
-      }
+          minimize: true,
+        },
+      },
     },
-    { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000&name=assets/images/[name].[ext]' }
-  ]
+    {
+      test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+      loader: 'url-loader?limit=100000&name=assets/images/[name].[ext]',
+    },
+  ],
 };
 
 export const plugins = [
   new ProgressBarPlugin({
-    format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(':percent')} (:elapsed seconds)`,
+    format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(
+      ':percent',
+    )} (:elapsed seconds)`,
     clear: true,
-    summary: false
+    summary: false,
   }),
   new AssetsPlugin({
     path: buildPath,
     filename: 'webpack-assets.json',
-    prettyPrint: true
+    prettyPrint: true,
   }),
-  new baseWpPlugins.CompileInfoPlugin()
+  new baseWpPlugins.CompileInfoPlugin(),
 ];
 
 export const postcss = [
@@ -70,7 +76,7 @@ export const postcss = [
   require('postcss-nested')(),
   require('postcss-reporter')(),
   require('precss')(),
-  require('postcss-mixins')()
+  require('postcss-mixins')(),
 ];
 
 export const resolve = {
@@ -80,6 +86,6 @@ export const resolve = {
     base: path.resolve(__dirname, '../src/base'),
     store: path.resolve(__dirname, '../src/base/store'),
     containers: path.resolve(__dirname, '../src/app/containers'),
-    components: path.resolve(__dirname, '../src/app/components')
-  }
+    components: path.resolve(__dirname, '../src/app/components'),
+  },
 };

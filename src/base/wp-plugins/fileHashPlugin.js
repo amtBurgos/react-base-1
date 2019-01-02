@@ -1,13 +1,13 @@
 import fs from 'fs';
 import path from 'path';
-import console from "../shared/console";
+import console from '../shared/console';
 
 export default class FileHashPlugin {
-  constructor (options) {
+  constructor(options) {
     this.options = options;
   }
 
-  write (data) {
+  write(data) {
     try {
       fs.writeFileSync(path.resolve(this.options.path, this.options.fileName), data, 'utf8');
       console.success(`${this.options.fileName} hash file generated correctly!`);
@@ -16,13 +16,15 @@ export default class FileHashPlugin {
     }
   }
 
-  apply (compiler) {
+  apply(compiler) {
     compiler.plugin('done', (stats) => {
       const assets = stats.toJson();
-      this.write(JSON.stringify({
-        hash: assets.hash,
-        files: assets.assetsByChunkName
-      }));
+      this.write(
+        JSON.stringify({
+          hash: assets.hash,
+          files: assets.assetsByChunkName,
+        }),
+      );
     });
   }
 }

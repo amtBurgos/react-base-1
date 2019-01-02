@@ -6,15 +6,13 @@ import * as common from './webpack.common';
 
 export const cache = true;
 export const devtool = 'eval';
-export const entry = common.entry;
-export const context = common.context;
-export const resolve = common.resolve;
+export const { entry, context, resolve } = common;
 
 export const output = {
   path: common.buildPath,
   publicPath: '/',
   library: '[name]',
-  filename: '[name].dll.js'
+  filename: '[name].dll.js',
 };
 
 export const module = {
@@ -23,19 +21,19 @@ export const module = {
       test: /\.(js|jsx)$/,
       include: /src/,
       exclude: [/node_modules/, /dist/, /server/],
-      use: ['babel-loader']
-    }
-  ]
+      use: ['babel-loader'],
+    },
+  ],
 };
 
 export const plugins = [
   new webpack.DllPlugin({
     path: path.join(common.dllPath, '[name]-manifest.json'),
-    name: '[name]'
+    name: '[name]',
   }),
   new AssetsPlugin({
     path: common.buildPath,
     filename: 'webpack-assets.json',
-    prettyPrint: true
-  })
+    prettyPrint: true,
+  }),
 ].concat(common.plugins);

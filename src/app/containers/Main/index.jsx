@@ -11,8 +11,7 @@ import styles from './styles';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
-  MainModel: PropTypes.instanceOf(Immutable.Record).isRequired,
-  history: PropTypes.object.isRequired
+  MainModel: PropTypes.instanceOf(Immutable.Record).isRequired
 };
 
 class Main extends Component {
@@ -28,7 +27,7 @@ class Main extends Component {
   }
 
   onGoToLogin() {
-    this.props.history.push(ROUTES.PUBLIC.LOGIN);
+    this.actions.push(ROUTES.PUBLIC.LOGIN);
   }
 
   onLogout() {

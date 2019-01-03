@@ -1,3 +1,4 @@
+import { push } from 'connected-react-router';
 import loginActions from 'containers/Login/actions';
 import LogoAPI from '../api';
 import ActionTypes from '../actionTypes';
@@ -8,6 +9,7 @@ const getLogo = () => ({
 });
 
 export default {
+  push,
   getLogo,
   logoutRequest: loginActions.logoutRequest
 };

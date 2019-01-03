@@ -10,8 +10,7 @@ import styles from './styles';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
-  UserModel: PropTypes.instanceOf(Immutable.Record).isRequired,
-  history: PropTypes.object.isRequired
+  UserModel: PropTypes.instanceOf(Immutable.Record).isRequired
 };
 
 class Login extends Component {
@@ -24,7 +23,7 @@ class Login extends Component {
   }
 
   onGoToMain() {
-    this.props.history.push(ROUTES.PRIVATE.MAIN);
+    this.actions.push(ROUTES.PRIVATE.MAIN);
   }
 
   onLogout() {

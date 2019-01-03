@@ -5,7 +5,7 @@ import styles from './styles';
 
 const propTypes = {
   value: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired
+  location: PropTypes.string.isRequired,
 };
 
 const LinkButton = props => (

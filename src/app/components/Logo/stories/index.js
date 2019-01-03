@@ -6,7 +6,7 @@ import { text } from '@storybook/addon-knobs';
 import Notes from './Notes.md';
 
 storiesOf('Button', module)
-  .addDecorator(story => <div style={{ textAlign: 'center' }}>{story()}</div>)
+  .addDecorator(story => <div style={ { textAlign: 'center' } }>{story()}</div>)
   .add('with text', () => <Button>Hello Button</Button>)
   .add('with some emoji', () => (
     <Button>

@@ -2,7 +2,7 @@ import console from '../shared/console';
 
 export default class CompileInfoPlugin {
   apply(compiler) {
-    compiler.plugin('done', (stats) => {
+    compiler.plugin('done', stats => {
       if (
         stats.compilation.errors
         && stats.compilation.errors.length

@@ -14,11 +14,10 @@ const history = createBrowserHistory();
 const store = ConfigureStore(history, InitialState);
 
 render(
-  <Provider store={store}>
+  <Provider store={ store }>
     <Router basename="/">
       <Routes />
     </Router>
   </Provider>,
-  // eslint-disable-next-line no-undef
-  document.getElementById('root'),
+  document.getElementById('root')
 );

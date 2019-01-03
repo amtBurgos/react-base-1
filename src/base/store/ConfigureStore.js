@@ -2,9 +2,10 @@
 import { createLogger } from 'redux-logger';
 import reduxReqMiddleware from 'redux-req-middleware';
 import { createStore, compose, applyMiddleware } from 'redux';
+import { routerMiddleware } from 'connected-react-router';
 
 import base from 'base';
-import rootReducer from '../reducers';
+import createRootReducer from '../reducers';
 
 const configureStore = (history, initialState) => {
   let composeEnhancer = compose;
@@ -13,21 +14,22 @@ const configureStore = (history, initialState) => {
   if (base.env === 'development') {
     middleware = applyMiddleware(
       createLogger({ level: 'info', collapsed: true }),
-      reduxReqMiddleware(),
+      routerMiddleware(history),
+      reduxReqMiddleware()
     );
     composeEnhancer = typeof window !== 'undefined' && (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose);
   } else {
-    middleware = applyMiddleware(reduxReqMiddleware());
+    middleware = applyMiddleware(routerMiddleware(history), reduxReqMiddleware());
   }
 
   const enhancer = composeEnhancer(middleware);
-  const store = createStore(rootReducer, initialState, enhancer);
+  const store = createStore(createRootReducer(history), initialState, enhancer);
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers').default;
 
-      store.replaceReducer(nextRootReducer);
+      store.replaceReducer(nextRootReducer(history));
     });
   }
 

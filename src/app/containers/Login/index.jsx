@@ -6,53 +6,53 @@ import { bindActionCreators } from 'redux';
 
 import { ROUTES } from 'base/routes';
 import Actions from './actions';
-import Logo from '../../components/Logo';
 import styles from './styles';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
-  MainModel: PropTypes.instanceOf(Immutable.Record).isRequired,
+  UserModel: PropTypes.instanceOf(Immutable.Record).isRequired,
   history: PropTypes.object.isRequired
 };
 
-class Main extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.actions = bindActionCreators(Actions, props.dispatch);
-    this.onGoToLogin = this.onGoToLogin.bind(this);
+    this.onGoToMain = this.onGoToMain.bind(this);
     this.onLogout = this.onLogout.bind(this);
+    this.onLogin = this.onLogin.bind(this);
   }
 
-  componentDidMount() {
-    return this.props.MainModel.name || this.actions.getLogo();
-  }
-
-  onGoToLogin() {
-    this.props.history.push(ROUTES.PUBLIC.LOGIN);
+  onGoToMain() {
+    this.props.history.push(ROUTES.PRIVATE.MAIN);
   }
 
   onLogout() {
-    this.actions.logoutRequest().then(({ type }) => {
-      if (type === 'LOGOUT_SUCCESS') this.onGoToLogin();
+    this.actions.logoutRequest();
+  }
+
+  onLogin() {
+    this.actions.loginRequest('FakeUser', 'FakePassword').then(({ type }) => {
+      if (type === 'LOGIN_SUCCESS') this.onGoToMain();
     });
   }
 
   render() {
-    const LogoData = this.props.MainModel;
-
     return (
       <div className={ styles.Main }>
         <div>
-          <Logo alt={ LogoData.alt } width={ LogoData.width } src={ LogoData.src } />
           <div>
-            <div className={ styles.txt }>Examples</div>
+            <div className={ styles.txt }>Login Page</div>
           </div>
           <div>
-            <button type="button" onClick={ this.onGoToLogin }>
-              Go to login page
+            <button type="button" onClick={ this.onGoToMain }>
+              Go to second page
             </button>
             <button type="button" onClick={ this.onLogout }>
               Log Out
+            </button>
+            <button type="button" onClick={ this.onLogin }>
+              Log In
             </button>
           </div>
         </div>
@@ -61,6 +61,6 @@ class Main extends Component {
   }
 }
 
-Main.propTypes = propTypes;
+Login.propTypes = propTypes;
 
-export default connect(state => ({ MainModel: state.Main }))(Main);
+export default connect(state => ({ UserModel: state.User }))(Login);

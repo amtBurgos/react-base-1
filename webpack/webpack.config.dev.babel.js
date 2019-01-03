@@ -12,7 +12,7 @@ export const { context } = common;
 export const { resolve } = common;
 
 export const entry = {
-  app: common.clientPath
+  app: ['babel-polyfill', common.clientPath]
 };
 
 export const devServer = {

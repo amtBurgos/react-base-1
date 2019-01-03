@@ -29,8 +29,8 @@ export const entry = {
     'history',
     'recompose',
     'redux-req-middleware',
-    'isomorphic-fetch',
-  ],
+    'isomorphic-fetch'
+  ]
 };
 
 export const module = {
@@ -42,31 +42,31 @@ export const module = {
         loader: 'html-loader',
         options: {
           attrs: [':data-src'],
-          minimize: true,
-        },
-      },
+          minimize: true
+        }
+      }
     },
     {
       test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-      loader: 'url-loader?limit=100000&name=assets/images/[name].[ext]',
-    },
-  ],
+      loader: 'url-loader?limit=100000&name=assets/images/[name].[ext]'
+    }
+  ]
 };
 
 export const plugins = [
   new ProgressBarPlugin({
     format: `[BASE] ${chalk.blue('i')} Bundling... [:bar] ${chalk.green(
-      ':percent',
+      ':percent'
     )} (:elapsed seconds)`,
     clear: true,
-    summary: false,
+    summary: false
   }),
   new AssetsPlugin({
     path: buildPath,
     filename: 'webpack-assets.json',
-    prettyPrint: true,
+    prettyPrint: true
   }),
-  new baseWpPlugins.CompileInfoPlugin(),
+  new baseWpPlugins.CompileInfoPlugin()
 ];
 
 export const postcss = [
@@ -76,7 +76,7 @@ export const postcss = [
   require('postcss-nested')(),
   require('postcss-reporter')(),
   require('precss')(),
-  require('postcss-mixins')(),
+  require('postcss-mixins')()
 ];
 
 export const resolve = {
@@ -87,5 +87,6 @@ export const resolve = {
     store: path.resolve(__dirname, '../src/base/store'),
     containers: path.resolve(__dirname, '../src/app/containers'),
     components: path.resolve(__dirname, '../src/app/components'),
-  },
+    conf: path.resolve(__dirname, '../src/app/conf')
+  }
 };

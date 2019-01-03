@@ -11,3 +11,4 @@ export { generateMap } from './shared/ModelHelper';
 export { generateList } from './shared/ModelHelper';
 export { generateImmutable } from './shared/ModelHelper';
 export { createActionType } from './shared/CreateActionType';
+export { HTTPClient } from './shared/HttpClient';

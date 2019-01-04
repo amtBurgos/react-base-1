@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const MyPage = ({ page }) => (
-  <div>
+  <div style={ { border: '1px grey dashed', width: 200 } }>
     <h3>Page {page}</h3>
     <p>Content example - {page}</p>
   </div>
@@ -20,9 +20,16 @@ MyPage.propTypes = propTypes;
 
 storiesOf('Pagination', module)
   .addDecorator(story => (
-    <div style={ { textAlign: 'center' } }>
+    <div
+      style={ {
+        display: 'flex',
+        justifyContent: 'center',
+        flexFlow: 'column',
+        alignItems: 'center'
+      } }
+    >
       <h1>Pagination</h1>
-      {story()}
+      <div style={ { textAlign: 'center' } }>{story()}</div>
     </div>
   ))
 

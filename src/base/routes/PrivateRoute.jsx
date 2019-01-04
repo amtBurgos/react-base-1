@@ -15,7 +15,8 @@ const PrivateRoute = ({ logged, routeProps }) => {
   if (logged) {
     component = <Route { ...routeProps } />;
   } else {
-    component = <Redirect from={ ROUTES.PUBLIC.ROOT } to={ routeProps.path } />;
+    console.log('Not logged --> Redirecting to login');
+    component = <Redirect to={ ROUTES.PUBLIC.LOGIN } />;
   }
   return component;
 };

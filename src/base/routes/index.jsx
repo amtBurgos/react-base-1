@@ -14,7 +14,7 @@ const Routes = () => (
         <Switch>
           <Route exact={ true } path={ ROUTES.PUBLIC.LOGIN } component={ Login } />
           <PrivateRoute exact={ true } path={ ROUTES.PRIVATE.MAIN } component={ Main } />
-          <Redirect from={ ROUTES.PUBLIC.ROOT } to={ ROUTES.PUBLIC.LOGIN } />
+          {/* <Redirect to={ ROUTES.PUBLIC.LOGIN } /> */}
         </Switch>
       </App>
     ) }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
 import { ConnectedRouter as Router } from 'connected-react-router';
 
 import InitialState from 'store/InitialState';
@@ -9,7 +9,7 @@ import ConfigureStore from 'store/ConfigureStore';
 
 import Routes from 'base/routes';
 
-const history = createBrowserHistory();
+const history = createHashHistory();
 
 const store = ConfigureStore(history, InitialState);
 

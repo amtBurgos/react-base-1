@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Main from 'containers/Main';
 import Login from 'containers/Login';
 import App from 'containers/App';
 
 import PrivateRoute from './PrivateRoute';
+import NotFoundRoute from './NotFoundRoute';
 import ROUTES from './routes';
 
 const Routes = () => (
@@ -14,6 +15,7 @@ const Routes = () => (
         <Switch>
           <Route exact={ true } path={ ROUTES.PUBLIC.LOGIN } component={ Login } />
           <PrivateRoute exact={ true } path={ ROUTES.PRIVATE.MAIN } component={ Main } />
+          <Route component={ NotFoundRoute } />
           {/* <Redirect to={ ROUTES.PUBLIC.LOGIN } /> */}
         </Switch>
       </App>

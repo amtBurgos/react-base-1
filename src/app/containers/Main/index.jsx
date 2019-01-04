@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import Immutable from "immutable";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { bindActionCreators } from "redux";
+import React, { Component } from 'react';
+import Immutable from 'immutable';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 
-import Logo from "components/Logo";
-import Pagination from "components/Pagination";
+import Logo from 'components/Logo';
 
-import Actions from "./actions";
-import styles from "./styles";
+import Actions from './actions';
+import styles from './styles';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
@@ -29,17 +28,12 @@ class Main extends Component {
     const LogoData = this.props.MainModel;
 
     return (
-      <div className={styles.Main}>
+      <div className={ styles.Main }>
         <div>
-          <Logo alt={LogoData.alt} width={LogoData.width} src={LogoData.src} />
+          <Logo alt={ LogoData.alt } width={ LogoData.width } src={ LogoData.src } />
 
           <div>
-            <div className={styles.txt}>Examples</div>
-            <div className={styles.txt}>
-              <Pagination size={10} range={5}>
-                {page => <p>Content Page {page}</p>}
-              </Pagination>
-            </div>
+            <div className={ styles.txt }>Examples</div>
           </div>
         </div>
       </div>

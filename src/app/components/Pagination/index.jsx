@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import styles from "./styles";
+import styles from './styles';
 
 export default class Pagination extends Component {
   static propTypes = {
@@ -55,10 +55,7 @@ export default class Pagination extends Component {
     if (currentPage <= range) {
       pageRange = this.createRange(1, this.props.range);
     } else if (currentPage >= range && currentPage <= size - range) {
-      pageRange = this.createRange(
-        currentPage - range + offset,
-        currentPage + range - 1
-      );
+      pageRange = this.createRange(currentPage - range + offset, currentPage + range - 1);
     } else {
       pageRange = this.createRange(size - this.props.range + 1, size);
     }
@@ -73,10 +70,10 @@ export default class Pagination extends Component {
 
     const selectablePages = pageRange.map(page => (
       <button
-        key={page}
-        className={page === currentPage ? styles.selectedPage : ""}
-        data-page={page}
-        onClick={this.goToPage}
+        key={ page }
+        className={ page === currentPage ? styles.selectedPage : '' }
+        data-page={ page }
+        onClick={ this.goToPage }
       >
         {page}
       </button>
@@ -84,12 +81,12 @@ export default class Pagination extends Component {
     return (
       <div>
         {this.props.children && this.props.children(currentPage)}
-        <button data-page={currentPage - 1} onClick={this.goToPage}>
-          {"<"}
+        <button data-page={ currentPage - 1 } onClick={ this.goToPage }>
+          {'<'}
         </button>
         {selectablePages}
-        <button data-page={currentPage + 1} onClick={this.goToPage}>
-          {">"}
+        <button data-page={ currentPage + 1 } onClick={ this.goToPage }>
+          {'>'}
         </button>
       </div>
     );

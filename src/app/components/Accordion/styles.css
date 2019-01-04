@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-flow: column;
+}
+
+.container > :nth-child(n) {
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px 1px 0px 1px;
+}
+
+.container > :last-child {
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px;
+}

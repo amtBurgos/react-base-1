@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
+import { i18n } from 'base/i18n';
 
 import Actions from './actions';
 import Logo from '../../components/Logo';
@@ -10,7 +11,8 @@ import styles from './styles';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
-  MainModel: PropTypes.instanceOf(Immutable.Record).isRequired
+  MainModel: PropTypes.instanceOf(Immutable.Record).isRequired,
+  __: PropTypes.func.isRequired
 };
 
 class Main extends Component {
@@ -24,15 +26,17 @@ class Main extends Component {
   }
 
   render() {
-    const LogoData = this.props.MainModel;
+    const { MainModel, __ } = this.props;
 
     return (
       <div className={ styles.Main }>
         <div>
-          <Logo alt={ LogoData.alt } width={ LogoData.width } src={ LogoData.src } />
+          <Logo alt={ MainModel.alt } width={ MainModel.width } src={ MainModel.src } />
 
           <div>
-            <div className={ styles.txt }>Examples</div>
+            <div className={ styles.txt }>{__('EXAMPLES')}</div>
+
+            <div className={ styles.txt }>{__('CONTENT')}</div>
           </div>
         </div>
       </div>
@@ -42,4 +46,4 @@ class Main extends Component {
 
 Main.propTypes = propTypes;
 
-export default connect(state => ({ MainModel: state.Main }))(Main);
+export default i18n(connect(state => ({ MainModel: state.Main }))(Main));

@@ -1,6 +1,5 @@
 export const AppModel = {
-  lang: 'es',
-  translations: {}
+  lang: 'es'
 };
 
 export const setInitialState = (initialState = {}) => ({

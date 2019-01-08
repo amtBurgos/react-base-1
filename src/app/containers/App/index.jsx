@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as Actions from './actions';
+import * as api from './api';
 import './styles';
 
 class App extends Component {
@@ -19,8 +20,7 @@ class App extends Component {
   actions = bindActionCreators(Actions, this.props.dispatch);
 
   componentDidMount() {
-    this.actions.getTranslations();
-    // this.setState({ isReady: true });
+    api.getTranslations().finally(() => this.setState({ isReady: true }));
   }
 
   setLanguage = event => {
@@ -29,6 +29,8 @@ class App extends Component {
 
   render() {
     const { children } = this.props;
+    if (!this.state.isReady) return <div>Loading ...</div>;
+
     return (
       <>
         <header>

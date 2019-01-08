@@ -10,10 +10,6 @@ class Accordion extends Component {
     children: PropTypes.node.isRequired
   };
 
-  static defaultProps = {
-    allowMultipleOpen: false
-  };
-
   createSections = children => children.reduce((acc, curr) => {
     acc[curr.props.label] = curr.props.isOpen;
     return acc;
@@ -24,14 +20,11 @@ class Accordion extends Component {
   };
 
   onClick = label => {
-    const {
-      props: { allowMultipleOpen },
-      state: { openSections }
-    } = this;
+    const { openSections } = this.state;
 
     const isOpen = !!openSections[label];
 
-    if (allowMultipleOpen) {
+    if (this.props.allowMultipleOpen) {
       this.setState({
         openSections: {
           ...openSections,
@@ -48,20 +41,14 @@ class Accordion extends Component {
   };
 
   render() {
-    const {
-      onClick,
-      props: { children },
-      state: { openSections }
-    } = this;
-
     return (
       <div className={ styles.container }>
-        {children.map((child, i) => (
+        {this.props.children.map((child, i) => (
           <AccordionSection
             key={ i }
-            isOpen={ !!openSections[child.props.label] }
+            isOpen={ !!this.state.openSections[child.props.label] }
             label={ child.props.label }
-            onClick={ onClick }
+            onClick={ this.onClick }
           >
             {child.props.children}
           </AccordionSection>

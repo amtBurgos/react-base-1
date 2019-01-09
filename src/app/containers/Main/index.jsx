@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 
 import Logo from 'components/Logo';
 
+import Table from 'components/Table';
 import Actions from './actions';
 import styles from './styles';
 
@@ -31,7 +32,14 @@ class Main extends Component {
       <div className={ styles.Main }>
         <div>
           <Logo alt={ LogoData.alt } width={ LogoData.width } src={ LogoData.src } />
-
+          <Table
+            columns={ [
+              { label: 'column1', value: 'c1' },
+              { label: 'column2', value: 'c2' },
+              { label: 'column3', value: 'c3' }
+            ] }
+            data={ [{ c1: 'value1', c2: 'value2', c3: 'value3' }] }
+          />
           <div>
             <div className={ styles.txt }>Examples</div>
           </div>

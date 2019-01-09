@@ -2,20 +2,20 @@ import React from 'react';
 import memoize from 'memoize-one';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getProperty } from 'base/shared/utils';
 
 import I18nStore from './Store';
 
-export const i18n = (ComponentToTranslate, myNamespace = 'commons') => {
+export const i18n = (ComponentToTranslate, globalNamespace = 'commons') => {
   const propTypes = {
     lang: PropTypes.string
   };
 
+  // prettier-ignore
   const translate = memoize(
-    (translations, lang, text, namespace = myNamespace) => (translations
-        && (translations[namespace]
-          && translations[namespace][text]
-          && translations[namespace][text][lang]))
-      || text
+    (translations, lang, text, namespace = globalNamespace) => (
+      getProperty(translations, namespace, text, lang) || text
+    )
   );
 
   const ComponentWithTranslations = ({ lang, ...props }) => (

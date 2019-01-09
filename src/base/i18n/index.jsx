@@ -10,14 +10,19 @@ export const i18n = (ComponentToTranslate, myNamespace = 'commons') => {
     lang: PropTypes.string
   };
 
-  const translate = memoize((translations, lang) => (text, namespace = myNamespace) => (translations
-      && (translations[namespace]
-        && translations[namespace][text]
-        && translations[namespace][text][lang]))
-    || text);
+  const translate = memoize(
+    (translations, lang, text, namespace = myNamespace) => (translations
+        && (translations[namespace]
+          && translations[namespace][text]
+          && translations[namespace][text][lang]))
+      || text
+  );
 
   const ComponentWithTranslations = ({ lang, ...props }) => (
-    <ComponentToTranslate { ...props } __={ translate(I18nStore.translations, lang) } />
+    <ComponentToTranslate
+      { ...props }
+      __={ (text, namespace) => translate(I18nStore.translations, lang, text, namespace) }
+    />
   );
 
   ComponentWithTranslations.propTypes = propTypes;

@@ -1,13 +1,13 @@
 import fetch from 'isomorphic-fetch';
 import { i18n } from 'base/conf/site';
 import { adaptor } from 'base/shared/translations';
-import I18nStore from 'base/i18n/Store';
+import I18nStore from 'base/i18n';
 
 const TRANSLATIONS = {
   commons: {
     EXAMPLES: {
-      es: 'Ejemplos',
-      en: 'Examples'
+      'es-ES': 'Ejemplos',
+      'en-EN': 'Examples'
     }
   }
 };

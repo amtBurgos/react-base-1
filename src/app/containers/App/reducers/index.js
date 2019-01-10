@@ -4,7 +4,7 @@ import { AppModel } from '../models';
 
 const setLanguage = (state, { payload }) => ({
   ...state,
-  lang: payload
+  language: payload
 });
 
 const actionHandlers = {

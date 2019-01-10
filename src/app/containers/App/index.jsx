@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import I18nStore from 'base/i18n';
 
 import * as Actions from './actions';
 import * as api from './api';
@@ -10,7 +11,9 @@ import './styles';
 class App extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    language: PropTypes.string.isRequired,
+    history: PropTypes.object
   };
 
   state = {
@@ -23,21 +26,29 @@ class App extends Component {
     api.getTranslations().finally(() => this.setState({ isReady: true }));
   }
 
+  componentDidUpdate(prevProps) {
+    const { language } = this.props;
+    if (prevProps.language !== language) {
+      I18nStore.setLanguage(language);
+      this.props.history.push(`?${language.slice(0, 2)}`);
+    }
+  }
+
   setLanguage = event => {
     this.actions.setLanguage(event.target.dataset.lang);
   };
 
   render() {
-    const { children } = this.props;
+    const { children, language } = this.props;
     if (!this.state.isReady) return <div>Loading ...</div>;
-
+    console.log('App render', language);
     return (
       <>
         <header>
-          <button data-lang={ 'es' } onClick={ this.setLanguage }>
+          <button data-lang={ 'es-ES' } onClick={ this.setLanguage }>
             ES
           </button>
-          <button data-lang={ 'en' } onClick={ this.setLanguage }>
+          <button data-lang={ 'en-EN' } onClick={ this.setLanguage }>
             EN
           </button>
         </header>
@@ -47,4 +58,6 @@ class App extends Component {
   }
 }
 
-export default connect(null)(App);
+export default connect(state => ({
+  language: state.App.language
+}))(App);

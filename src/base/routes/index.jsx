@@ -6,8 +6,8 @@ import App from 'containers/App';
 const Routes = () => (
   <Route
     path="/"
-    component={ () => (
-      <App>
+    component={ props => (
+      <App { ...props }>
         <Route exact={ true } path="/" component={ Main } />
       </App>
     ) }

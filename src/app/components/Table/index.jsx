@@ -4,21 +4,51 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 class Table extends Component {
+  static defaultProps = {
+    emptyCellValue: ''
+  };
+
   static propTypes = {
     // data: PropTypes.array.isRequired
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
     columns: PropTypes.arrayOf(
       PropTypes.shape({
         label: PropTypes.string,
-        value: PropTypes.string
+        id: PropTypes.string
       })
-    ).isRequired
+    ).isRequired,
+    emptyCellValue: PropTypes.string.isRequired
   };
 
   render() {
+    const columnIds = this.props.columns.map(column => column.id);
+    const header = (
+      <React.Fragment>
+        {this.props.columns.map(column => (
+          <div key={ column.id } className={ styles.cell }>
+            {column.label}
+          </div>
+        ))}
+      </React.Fragment>
+    );
+
+    const cells = (
+      <React.Fragment>
+        {this.props.data.map(row => columnIds.map((columnId, index) => (
+          <div key={ `${columnId}-${index}` } className={ styles.cell }>
+            {row[columnId] || this.props.emptyCellValue}
+          </div>
+        )))}
+      </React.Fragment>
+    );
+
     return (
-      <div className={ styles.container }>
-        <div className={ styles.cell }>1</div>
+      <div
+        className={ styles.container }
+        style={ { gridTemplateColumns: this.props.columns.map(() => 'auto').join(' ') } }
+      >
+        {header}
+        {cells}
       </div>
     );
   }

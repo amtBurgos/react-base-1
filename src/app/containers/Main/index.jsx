@@ -34,11 +34,16 @@ class Main extends Component {
           <Logo alt={ LogoData.alt } width={ LogoData.width } src={ LogoData.src } />
           <Table
             columns={ [
-              { label: 'column1', value: 'c1' },
-              { label: 'column2', value: 'c2' },
-              { label: 'column3', value: 'c3' }
+              { label: 'column1', id: 'c1' },
+              { label: 'column2', id: 'c2' },
+              { label: 'column3', id: 'c3' }
             ] }
-            data={ [{ c1: 'value1', c2: 'value2', c3: 'value3' }] }
+            data={ [
+              { c1: 'value1', c2: 'value2', c3: 'value3' },
+              { c1: 'value1', c3: 'value3' },
+              { c2: 'value2', c3: 'value3' },
+              { c1: 'value1', c2: 'value2' }
+            ] }
           />
           <div>
             <div className={ styles.txt }>Examples</div>

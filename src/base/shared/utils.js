@@ -8,3 +8,5 @@ export const getProperty = (object, ...args) => {
     return acc;
   }, object);
 };
+
+export const camelize = str => str.replace(/\W+(.)/g, (match, chr) => chr.toUpperCase());

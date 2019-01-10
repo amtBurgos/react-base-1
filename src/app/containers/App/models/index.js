@@ -1,5 +1,7 @@
+import { camelize } from 'base/shared/utils';
+
 export const AppModel = {
-  lang: 'es'
+  lang: camelize(navigator.language)
 };
 
 export const setInitialState = (initialState = {}) => ({

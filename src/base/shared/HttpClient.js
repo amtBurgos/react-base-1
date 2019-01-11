@@ -5,7 +5,7 @@ const customFetch = (method, url, body, isBlob) => {
     credentials: 'include',
     headers: {
       Accept: 'application/json',
-      'Cache-Control': 'max-age=1800',
+      'Cache-Control': 'no-cache',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': 'true',
@@ -13,9 +13,13 @@ const customFetch = (method, url, body, isBlob) => {
       'Access-Control-Allow-Headers':
         'Origin, Content-Type, Authorization, X-Auth-Token, X-Requested-With, Accept',
       'Access-Control-Request-Method': method
-    },
-    body: body && JSON.stringify(body)
+    }
   };
+
+  const token = sessionStorage.getItem('token');
+  if (token) request.headers.Authorization = `Bearer ${token}`;
+
+  if (body) request.body = JSON.stringify(body);
 
   return fetch(url, request)
     .then(response => {
@@ -30,7 +34,7 @@ const customFetch = (method, url, body, isBlob) => {
 export const HTTPClient = domain => ({
   DOWNLOAD: url => customFetch('GET', domain + url, null, true),
 
-  GET: url => customFetch('GET', domain + url, null),
+  GET: url => customFetch('GET', domain + url),
 
   POST: (url, body) => customFetch('POST', domain + url, body),
 
@@ -38,5 +42,5 @@ export const HTTPClient = domain => ({
 
   PATCH: (url, body) => customFetch('PATCH', domain + url, body),
 
-  DELETE: url => customFetch('DELETE', domain + url, null)
+  DELETE: url => customFetch('DELETE', domain + url)
 });

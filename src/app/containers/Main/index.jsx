@@ -27,13 +27,17 @@ class Main extends Component {
   }
 
   onGoToLogin() {
-    this.actions.push(ROUTES.PUBLIC.LOGIN);
+    this.actions.push(ROUTES.PUBLIC.ROOT);
   }
 
   onLogout() {
     this.actions.logoutRequest().then(({ type }) => {
       if (type === 'LOGOUT_SUCCESS') this.onGoToLogin();
     });
+  }
+
+  componentWillUnmount() {
+    console.log('unmounted!!');
   }
 
   render() {

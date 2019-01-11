@@ -10,10 +10,10 @@ import ROUTES from './routes';
 
 const Routes = () => (
   <Route
-    component={ () => (
+    render={ () => (
       <App>
         <Switch>
-          <Route exact={ true } path={ ROUTES.PUBLIC.LOGIN } component={ Login } />
+          <Route exact={ true } path={ ROUTES.PUBLIC.ROOT } component={ Login } />
           <PrivateRoute exact={ true } path={ ROUTES.PRIVATE.MAIN } component={ Main } />
           <Route component={ NotFound } />
         </Switch>

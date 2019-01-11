@@ -6,22 +6,21 @@ import { Route, Redirect } from 'react-router-dom';
 import ROUTES from './routes';
 
 const propTypes = {
-  logged: PropTypes.bool.isRequired,
-  routeProps: PropTypes.object.isRequired
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
-const PrivateRoute = ({ logged, routeProps }) => {
+const PrivateRoute = ({ isAuthenticated, ...props }) => {
   let component;
-  if (logged) {
-    component = <Route { ...routeProps } />;
+  if (isAuthenticated) {
+    component = <Route { ...props } />;
   } else {
-    console.log('Not logged --> Redirecting to login');
-    component = <Redirect to={ ROUTES.PUBLIC.LOGIN } />;
+    console.log('Not Authenticated --> Redirecting to login');
+    component = <Redirect to={ ROUTES.PUBLIC.ROOT } />;
   }
   return component;
 };
 
 PrivateRoute.propTypes = propTypes;
 
-const mapStateToProps = (state, routeProps) => ({ logged: state.User.get('logged'), routeProps });
+const mapStateToProps = state => ({ isAuthenticated: state.Session.get('isAuthenticated') });
 export default connect(mapStateToProps)(PrivateRoute);

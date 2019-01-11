@@ -1,22 +1,14 @@
 import { createReducer } from 'base';
-import { UserModel } from '../models';
+import { SessionModel } from '../models';
 import ActionTypes from '../actionTypes';
 
 const loginRequest = state => state;
 const loginError = state => state;
-const loginSuccess = (state, { payload }) => state
-  .set('userid', payload.userid)
-  .set('username', payload.username)
-  .set('token', payload.token)
-  .set('logged', true);
+const loginSuccess = state => state.set('isAuthenticated', true);
 
 const logoutRequest = state => state;
 const logoutError = state => state;
-const logoutSuccess = state => state
-  .set('userid', 0)
-  .set('username', '')
-  .set('token', '')
-  .set('logged', false);
+const logoutSuccess = state => state.set('isAuthenticated', false);
 
 const actionHandlers = {
   [ActionTypes.LOGIN_REQUEST]: loginRequest,
@@ -27,4 +19,4 @@ const actionHandlers = {
   [ActionTypes.LOGOUT_SUCCESS]: logoutSuccess
 };
 
-export default createReducer(actionHandlers, new UserModel());
+export default createReducer(actionHandlers, new SessionModel());

@@ -1,6 +1,6 @@
-import * as UserModel from 'containers/Login/models';
+import * as SessionModel from 'containers/Login/models';
 import * as MainModel from 'containers/Main/models';
 
-const modelIndex = [UserModel, MainModel];
+const modelIndex = [SessionModel, MainModel];
 
 export default { modelIndex };

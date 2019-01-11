@@ -1,7 +1,6 @@
 export default {
   PUBLIC: {
-    ROOT: '/',
-    LOGIN: '/' // We want this as root page
+    ROOT: '/'
   },
   PRIVATE: {
     MAIN: '/main'

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Immutable from 'immutable';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
@@ -9,8 +8,7 @@ import Actions from './actions';
 import styles from './styles';
 
 const propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  UserModel: PropTypes.instanceOf(Immutable.Record).isRequired
+  dispatch: PropTypes.func.isRequired
 };
 
 class Login extends Component {
@@ -62,4 +60,4 @@ class Login extends Component {
 
 Login.propTypes = propTypes;
 
-export default connect(state => ({ UserModel: state.User }))(Login);
+export default connect(null)(Login);

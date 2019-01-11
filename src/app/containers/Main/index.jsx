@@ -39,7 +39,7 @@ class Main extends Component {
               { label: 'column3', id: 'c3' }
             ] }
             data={ [
-              { c1: 'value1', c2: 'value2', c3: 'value3' },
+              { c1: 'value1', c2: 'value2', c3: ['value3', 'b', 'c', 'd'] },
               { c1: 'value1', c3: 'value3' },
               { c2: 'value2', c3: 'value3' },
               { c1: 'value1', c2: 'value2' }

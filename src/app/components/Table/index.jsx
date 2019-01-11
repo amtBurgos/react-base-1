@@ -9,7 +9,6 @@ class Table extends Component {
   };
 
   static propTypes = {
-    // data: PropTypes.array.isRequired
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
     columns: PropTypes.arrayOf(
       PropTypes.shape({

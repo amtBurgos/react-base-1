@@ -9,17 +9,13 @@ import PrivateRoute from './PrivateRoute';
 import ROUTES from './routes';
 
 const Routes = () => (
-  <Route
-    render={ () => (
-      <App>
-        <Switch>
-          <Route exact={ true } path={ ROUTES.PUBLIC.ROOT } component={ Login } />
-          <PrivateRoute exact={ true } path={ ROUTES.PRIVATE.MAIN } component={ Main } />
-          <Route component={ NotFound } />
-        </Switch>
-      </App>
-    ) }
-  />
+  <App>
+    <Switch>
+      <Route exact={ true } path={ ROUTES.PUBLIC.ROOT } component={ Login } />
+      <PrivateRoute exact={ true } path={ ROUTES.PRIVATE.MAIN } component={ Main } />
+      <Route component={ NotFound } />
+    </Switch>
+  </App>
 );
 
 export { ROUTES };

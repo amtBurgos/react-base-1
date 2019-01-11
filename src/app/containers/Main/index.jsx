@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
+import { txt } from 'base/i18n';
 
 import { ROUTES } from 'base/routes';
 import Actions from './actions';
@@ -41,14 +42,18 @@ class Main extends Component {
   }
 
   render() {
-    const LogoData = this.props.MainModel;
+    const { MainModel } = this.props;
 
+    console.log('Main render');
     return (
       <div className={ styles.Main }>
         <div>
-          <Logo alt={ LogoData.alt } width={ LogoData.width } src={ LogoData.src } />
+          <Logo alt={ MainModel.alt } width={ MainModel.width } src={ MainModel.src } />
+
           <div>
-            <div className={ styles.txt }>Examples</div>
+            <div className={ styles.txt }>{txt('EXAMPLES')}</div>
+
+            <div className={ styles.txt }>{txt('CONTENT')}</div>
           </div>
           <div>
             <button type="button" onClick={ this.onGoToLogin }>
@@ -66,4 +71,4 @@ class Main extends Component {
 
 Main.propTypes = propTypes;
 
-export default connect(state => ({ MainModel: state.Main }))(Main);
+export default connect(state => ({ MainModel: state.Main, lang: state.App.lang }))(Main);

@@ -1,21 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createHashHistory } from 'history';
-import { ConnectedRouter as Router } from 'connected-react-router';
+import { HashRouter as Router } from 'react-router-dom';
 
 import InitialState from 'store/InitialState';
 import ConfigureStore from 'store/ConfigureStore';
 
 import Routes from 'base/routes';
 
-const history = createHashHistory();
-
-const store = ConfigureStore(history, InitialState);
+const store = ConfigureStore(InitialState);
 
 const ReactApp = () => (
   <Provider store={ store }>
-    <Router history={ history }>
+    <Router basename="/">
       <Routes />
     </Router>
   </Provider>

@@ -8,7 +8,8 @@ import Actions from './actions';
 import styles from './styles';
 
 const propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  history: PropTypes.object
 };
 
 class Login extends Component {
@@ -21,7 +22,7 @@ class Login extends Component {
   }
 
   onGoToMain() {
-    this.actions.push(ROUTES.PRIVATE.MAIN);
+    this.props.history.push(ROUTES.PRIVATE.MAIN);
   }
 
   onLogout() {

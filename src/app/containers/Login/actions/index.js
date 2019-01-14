@@ -1,4 +1,3 @@
-import { push } from 'connected-react-router';
 import * as api from '../api';
 import ActionTypes from '../actionTypes';
 
@@ -13,7 +12,6 @@ const logoutRequest = () => ({
 });
 
 export default {
-  push,
   loginRequest,
   logoutRequest
 };

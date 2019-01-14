@@ -62,7 +62,8 @@
     "arrow-parens": 0,
     "linebreak-style": 0,
     "no-use-before-define": 0,
-    "class-methods-use-this": 0
+    "class-methods-use-this": 0,
+    "react/jsx-max-props-per-line": [2, { "maximum": 3 }]
   },
   "settings": {
     "import/resolver": {

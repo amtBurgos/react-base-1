@@ -6,8 +6,9 @@ import { bindActionCreators } from 'redux';
 import { txt } from 'base/i18n';
 import { ROUTES } from 'base/routes';
 
+import Logo from 'components/Logo';
+
 import Actions from './actions';
-import Logo from '../../components/Logo';
 import styles from './styles';
 
 const propTypes = {
@@ -28,11 +29,11 @@ class Main extends Component {
 
   goToLogin = () => {
     this.props.history.push(ROUTES.PUBLIC.ROOT);
-  }
+  };
 
   logout = () => {
     this.actions.logoutRequest();
-  }
+  };
 
   componentWillUnmount() {
     console.log('unmounted!!');

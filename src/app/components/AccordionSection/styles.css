@@ -1,0 +1,18 @@
+.accordion {
+  border: 1px grey solid;
+}
+
+.header {
+  cursor: pointer;
+  background: ghostwhite;
+  padding: 10px;
+}
+
+.body {
+  border-top: solid 1px grey;
+  padding: 10px;
+}
+
+.icon {
+  float: right;
+}

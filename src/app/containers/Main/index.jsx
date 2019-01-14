@@ -31,9 +31,7 @@ class Main extends Component {
   }
 
   logout = () => {
-    this.actions.logoutRequest().then(({ type }) => {
-      if (type === 'LOGOUT_SUCCESS') this.goToLogin();
-    });
+    this.actions.logoutRequest();
   }
 
   componentWillUnmount() {

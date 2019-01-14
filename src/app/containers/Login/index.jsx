@@ -7,49 +7,34 @@ import { ROUTES } from 'base/routes';
 import Actions from './actions';
 import styles from './styles';
 
-const propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  history: PropTypes.object
-};
-
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.actions = bindActionCreators(Actions, props.dispatch);
-    this.onGoToMain = this.onGoToMain.bind(this);
-    this.onLogout = this.onLogout.bind(this);
-    this.onLogin = this.onLogin.bind(this);
-  }
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    history: PropTypes.object
+  };
 
-  onGoToMain() {
-    this.props.history.push(ROUTES.PRIVATE.MAIN);
-  }
+  actions = bindActionCreators(Actions, this.props.dispatch);
 
-  onLogout() {
-    this.actions.logoutRequest();
-  }
-
-  onLogin() {
+  login = () => {
     this.actions.loginRequest('FakeUser', 'FakePassword').then(({ type }) => {
-      if (type === 'LOGIN_SUCCESS') this.onGoToMain();
+      if (type === 'LOGIN_SUCCESS') this.props.history.push(ROUTES.PRIVATE.DASHBOARD);
     });
-  }
+  };
 
   render() {
     return (
       <div className={ styles.Main }>
         <div>
           <div>
-            <div className={ styles.txt }>Login Page</div>
+            <label>User</label>
+            <input placeholder={ 'Write your username' } />
           </div>
           <div>
-            <button type="button" onClick={ this.onGoToMain }>
-              Go to second page
-            </button>
-            <button type="button" onClick={ this.onLogout }>
-              Log Out
-            </button>
-            <button type="button" onClick={ this.onLogin }>
+            <label>Password</label>
+            <input type="password" placeholder={ 'Write your password' } />
+          </div>
+          <div>
+            <button type="button" onClick={ this.login }>
               Log In
             </button>
           </div>
@@ -58,7 +43,5 @@ class Login extends Component {
     );
   }
 }
-
-Login.propTypes = propTypes;
 
 export default connect(null)(Login);

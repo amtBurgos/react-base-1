@@ -3,6 +3,11 @@ export default {
     ROOT: '/'
   },
   PRIVATE: {
-    MAIN: '/main'
+    DASHBOARD: '/dashboard',
+    USERS: {
+      ROOT: '/users',
+      CREATE: '/users/create',
+      DETAILS: '/users/details/:id'
+    }
   }
 };

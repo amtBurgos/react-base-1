@@ -19,12 +19,27 @@ class Table extends Component {
     emptyCellValue: PropTypes.string.isRequired
   };
 
+  state = {
+    sortColumn: this.props.columns[0].id,
+    sortDirection: this.props.columns[0].id
+  };
+
+  onSortColumn(sortColumn, sortDirection) {
+    console.log('Sort', sortColumn, sortDirection);
+    this.setState(() => ({ sortColumn, sortDirection }));
+  }
+
   render() {
     const columnIds = this.props.columns.map(column => column.id);
     const header = (
       <React.Fragment>
         {this.props.columns.map(column => (
-          <div key={ column.id } className={ styles.cell }>
+          <div
+            key={ column.id }
+            className={ styles.cell }
+            role="button"
+            onClick={ () => this.onSortColumn(column.id) }
+          >
             {column.label}
           </div>
         ))}
